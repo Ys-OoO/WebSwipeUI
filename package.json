@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "author": "ys <yangsenwb303@hellobike.com>",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "setup": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "antd": "^5.10.2",
+    "axios": "^1.5.1",
+    "dayjs": "^1.11.10",
+    "lodash": "^4.17.21",
+    "styled-components": "^6.1.0",
+    "umi": "^4.0.87"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "@umijs/plugins": "^4.0.87",
+    "typescript": "^5.0.3"
+  }
+}
