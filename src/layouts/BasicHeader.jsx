@@ -1,4 +1,5 @@
-import { FlexRow } from '@/components/StyledComponents';
+import Avatar from '@/components/Avater';
+import { FlexAuto, FlexColumn, FlexRow } from '@/components/StyledComponents';
 import { LogoIcon } from '@/components/icons';
 import style from './style.less';
 
@@ -10,8 +11,12 @@ export default function BasicHeader() {
         <span className={style.name}>Web Swipe</span>
       </FlexRow>
       {/* TODO */}
-      <div className={style.searchInput}></div>
-      <div className={style.avater}></div>
+      <FlexAuto>
+        <div className={style.searchInput}></div>
+      </FlexAuto>
+      <FlexColumn style={{ margin: 'auto', marginRight: 4 }}>
+        <Avatar />
+      </FlexColumn>
     </FlexRow>
   );
 }

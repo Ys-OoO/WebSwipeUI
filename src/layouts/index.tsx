@@ -6,12 +6,12 @@ import BasicSideBar from './BasicSideBar';
 
 export default function Layout() {
   return (
-    <FlexColumn style={{height:'100vh',minWidth:1200}}>
+    <FlexColumn style={{height:window.innerHeight,minWidth:1200}}>
       <BasicHeader />
       <FlexAuto>
         <BasicSideBar />
         <FlexColumnAuto>
-          <Outlet />
+          <Outlet/>
         </FlexColumnAuto>
       </FlexAuto>
     </FlexColumn>
