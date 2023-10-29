@@ -10,7 +10,9 @@ export default function Layout() {
       <BasicHeader />
       <FlexAuto>
         <BasicSideBar />
-        <FlexColumnAuto>
+        <FlexColumnAuto 
+        style={{ backgroundImage:"linear-gradient(60deg,#161823 0%, #161823 100%)", padding:16}}
+        >
           <Outlet/>
         </FlexColumnAuto>
       </FlexAuto>

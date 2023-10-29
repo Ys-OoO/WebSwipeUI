@@ -1,0 +1,42 @@
+.cardBox{
+  background-color: #33343f;
+  color:rgba( 255,255,255 ,.9);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 23px;
+
+  .cardCover{
+    background-color: #fff;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    flex:1;
+  }
+
+  .infoBox{
+    position: relative;
+    max-height: 100px;
+    min-height: 92px;
+    padding: 8px;
+
+    .desc{
+      -webkit-box-orient:vertical;
+      display: -webkit-box;
+      -webkit-line-clamp:2;
+      font-size: 15px;
+      line-height: 23px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
+    }
+
+    .otherInfo{
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      color: rgba( 255,255,255 ,.5);
+    }
+  }
+}
