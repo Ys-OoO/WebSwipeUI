@@ -1,7 +1,7 @@
 import VideoModal from '@/pages/VideoModal';
 import _ from 'lodash';
 import { useEffect, useRef, useState } from 'react';
-import { useParams, useSelector } from 'umi';
+import { useDispatch, useParams, useSelector } from 'umi';
 import 'wc-waterfall';
 import VideoCard from './VideoCard/VideoCard';
 
@@ -9,11 +9,20 @@ const cardWidth = 260;
 const gap = 20;
 
 export default function VideoWaterfall() {
-  //TODO 获取videoList
   const params = useParams();
-  const { videoList } = useSelector((state) => state.videoWaterfall);
+  const dispatch = useDispatch();
+  const { videoList, currentVideo } = useSelector((state) => state.videoWaterfall);
   const containerRef = useRef();
   const [column, setColumn] = useState(0);
+
+  useEffect(() => {
+    dispatch({
+      type: 'videoWaterfall/refreshVideoList',
+      config: {
+        category: params.category || null,
+      },
+    });
+  }, []);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -35,10 +44,16 @@ export default function VideoWaterfall() {
     <>
       <wc-waterfall gap={gap} cols={column} ref={containerRef}>
         {_.map(videoList, (video, index) => {
-          return <VideoCard videoInfo={video} key={index} style={{ height: video.height }} />;
+          return (
+            <VideoCard
+              videoInfo={video}
+              key={index}
+              style={{ height: video?.coverUrl ? undefined : 480 }}
+            />
+          );
         })}
       </wc-waterfall>
-      <VideoModal />
+      {_.isEmpty(currentVideo) ? <></> : <VideoModal />}
     </>
   );
 }

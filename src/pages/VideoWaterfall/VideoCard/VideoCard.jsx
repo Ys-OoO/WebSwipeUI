@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
-import { useDispatch } from 'umi';
+import { useDispatch, useSelector } from 'umi';
 import style from './style.less';
 
 const relativeTime = require('dayjs/plugin/relativeTime');
@@ -27,23 +27,30 @@ dayjs.updateLocale('zh-cn', {
 });
 
 export default function VideoCard({ videoInfo, ...props }) {
-  const { src, desc, createUser, createTime } = videoInfo;
+  const { coverUrl: src, description, createUser, createAt, id } = videoInfo;
+  const { videoList } = useSelector((state) => state.videoWaterfall);
   const dispatch = useDispatch();
-  const duration = !!createTime ? dayjs(createTime).fromNow() : '最近';
+  const duration = !!createAt ? dayjs(createAt).fromNow() : '最近';
   const userName = createUser ? createUser?.name : '匿名';
   const displayVideo = () => {
+    //找出当前点击的视频索引
+    const currentVideoIndex = _.findIndex(videoList, { id });
     dispatch({
       type: 'videoWaterfall/change',
-      config: { visible: true, currentVideo: videoInfo },
+      config: {
+        visible: true,
+        currentVideo: videoInfo,
+        currentVideoIndex,
+      },
     });
   };
   return (
     <div {...props} className={style.cardBox} onClick={displayVideo}>
       <div className={style.cardCover}>
-        <img src={src} alt={desc} />
+        <img src={src} alt={description} />
       </div>
       <div className={style.infoBox}>
-        <div className={style.desc}>{desc || '该视频作者未进行描述喔~'}</div>
+        <div className={style.desc}>{description || '该视频作者未进行描述喔~'}</div>
         <div className={style.otherInfo}>
           @ {userName} · {duration}
         </div>
