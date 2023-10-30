@@ -1,4 +1,3 @@
-import env from '@/config/env';
 import { message } from 'antd';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import errorCatcher, { Response } from './errorCatcher';
@@ -13,7 +12,7 @@ declare module 'axios' {
 }
 
 const requestInstance = axios.create({
-  baseURL: env.SERVICE_API,
+  baseURL: 'http://localhost:8080',
   timeout: 15000,
 });
 
@@ -46,11 +45,7 @@ requestInstance.interceptors.response.use(
     if (error.message === 'cancel') {
       throw error;
     }
-    errorCatcher(
-      true,
-      error.response as AxiosResponse<Response>,
-      error.config?.noGlobalMessage,
-    );
+    errorCatcher(true, error.response as AxiosResponse<Response>, error.config?.noGlobalMessage);
     return;
   },
 );
