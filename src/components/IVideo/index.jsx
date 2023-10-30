@@ -17,7 +17,7 @@ export default function IVideo({ url, exposeRef = () => {}, ...props }) {
         initialObjectFit={'contain'}
         className={style.player}
         locale="zh-Hans"
-        // autoplay={true}
+        autoplay={true}
         disablePictureInPicture={true}
         hiddenQualityMenu={true}
         sources={{
