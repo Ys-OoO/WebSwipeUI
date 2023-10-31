@@ -80,6 +80,8 @@ export default function VideoModal() {
                   exposeRef={(ref) => {
                     setVideoRef(ref);
                   }}
+                  className={style.videoPlayer}
+                  style={{ height: window.innerHeight * 0.8 }}
                 />
                 {/* TODO 点赞 关注... */}
                 <div className={style.actions}></div>

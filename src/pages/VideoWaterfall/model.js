@@ -15,8 +15,11 @@ export default {
       });
     },
     *refreshVideoList({ config }, { put }) {
-      const category = config;
-      const { data } = yield listVideo({ tag: category || null });
+      const { category } = config;
+      const { data } = yield listVideo({ category });
+      if (data.code !== 0) {
+        return;
+      }
       yield put({
         type: 'save',
         config: { videoList: data }
