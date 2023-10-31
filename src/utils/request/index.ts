@@ -36,10 +36,9 @@ requestInstance.interceptors.response.use(
     const data = response.data as Response;
     //validate
     if (!config.noValidate) {
-      if (data.code === 0 || data.status !== 1)
-        errorCatcher(false, response, config.noGlobalMessage);
+      if (data.code !== 0) errorCatcher(false, response, config.noGlobalMessage);
     }
-    return response;
+    return (data as AxiosResponse) || response;
   },
   (error: AxiosError) => {
     if (error.message === 'cancel') {
