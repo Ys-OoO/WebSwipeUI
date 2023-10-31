@@ -1,16 +1,16 @@
-import Player, { useMessageContextRef } from 'griffith';
-import { useEffect } from 'react';
+// import Player, { useMessageContextRef } from 'griffith';
+// import { useEffect } from 'react';
 
 export default function IVideo({ url, exposeRef = () => {}, ...props }) {
-  const messageContextRef = useMessageContextRef();
+  // const messageContextRef = useMessageContextRef();
 
-  useEffect(() => {
-    exposeRef(messageContextRef);
-  }, [messageContextRef]);
+  // useEffect(() => {
+  //   exposeRef(messageContextRef);
+  // }, [messageContextRef]);
 
   return (
     <div {...props}>
-      <Player
+      {/* <Player
         messageContextRef={messageContextRef}
         shouldObserveResize={true}
         initialObjectFit={'contain'}
@@ -23,7 +23,7 @@ export default function IVideo({ url, exposeRef = () => {}, ...props }) {
             play_url: url,
           },
         }}
-      />
+      /> */}
     </div>
   );
 }

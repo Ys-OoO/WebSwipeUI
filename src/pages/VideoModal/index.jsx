@@ -1,7 +1,7 @@
 import IVideo from '@/components/IVideo';
 import { FlexColumn, FlexRow } from '@/components/StyledComponents';
 import dayjs from 'dayjs';
-import { ACTIONS } from 'griffith';
+// import { ACTIONS } from 'griffith';
 import { MDBIcon, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog } from 'mdb-react-ui-kit';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'umi';
@@ -61,10 +61,10 @@ export default function VideoModal() {
         },
       });
     }
-    if (videoRef) {
-      videoRef.dispatchAction(ACTIONS.TIME_UPDATE, { currentTime: 0 });
-      videoRef.dispatchAction(ACTIONS.PLAY);
-    }
+    // if (videoRef) {
+    //   videoRef.dispatchAction(ACTIONS.TIME_UPDATE, { currentTime: 0 });
+    //   videoRef.dispatchAction(ACTIONS.PLAY);
+    // }
   };
 
   return (

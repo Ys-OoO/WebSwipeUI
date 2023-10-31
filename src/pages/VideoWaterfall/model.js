@@ -16,8 +16,8 @@ export default {
     },
     *refreshVideoList({ config }, { put }) {
       const { category } = config;
-      const { data } = yield listVideo({ category });
-      if (data.code !== 0) {
+      const { data, code } = yield listVideo({ tag: category });
+      if (code !== 0) {
         return;
       }
       yield put({
