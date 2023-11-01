@@ -1,30 +1,41 @@
 import CategoryMenu from '@/components/CategoryMenu';
-import { FlexColumn } from '@/components/StyledComponents';
-import { useEffect, useState } from 'react';
-import { history, useSelector } from 'umi';
+import { FlexAuto, FlexColumn } from '@/components/StyledComponents';
+import VideoUpload from '@/pages/VideoUpload';
+import { Button } from 'antd';
+import { history, useDispatch, useParams, useSelector } from 'umi';
 import style from './style.less';
 
 export default function BasicSideBar() {
   const { menuOption } = useSelector((state) => state.menu);
-  const [selected, setSelected] = useState('popular');
-
+  const dispatch = useDispatch();
+  const params = useParams();
   const onClick = (key) => {
     history.push('/home/' + key);
   };
-
-  useEffect(() => {
-    //TODO 获取分类信息并生成相应的分类
-    // setMenuOption()
-  }, []);
 
   return (
     <FlexColumn className={style.sidebar}>
       <CategoryMenu
         menuOption={menuOption}
-        defaultKey={selected}
+        defaultKey={params?.category || 'popular'}
         onClick={onClick}
         style={{ marginTop: 16 }}
       />
+      <FlexAuto />
+      <Button
+        ghost
+        danger
+        style={{ margin: 4 }}
+        onClick={() => {
+          dispatch({
+            type: 'videoUpload/save',
+            config: { visible: true },
+          });
+        }}
+      >
+        发布视频
+      </Button>
+      <VideoUpload />
     </FlexColumn>
   );
 }

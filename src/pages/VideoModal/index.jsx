@@ -1,9 +1,8 @@
 import IVideo from '@/components/IVideo';
 import { FlexColumn, FlexRow } from '@/components/StyledComponents';
 import dayjs from 'dayjs';
-// import { ACTIONS } from 'griffith';
 import { MDBIcon, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog } from 'mdb-react-ui-kit';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'umi';
 import style from './style.less';
 
@@ -14,7 +13,6 @@ export default function VideoModal() {
   );
   const { videoUrl, description, createAt, createUser } = currentVideo;
   const modalRef = useRef();
-  const [videoRef, setVideoRef] = useState();
   const time = dayjs(createAt).format('YYYY-MM-DD');
   const onCancel = () => {
     dispatch({
@@ -61,10 +59,6 @@ export default function VideoModal() {
         },
       });
     }
-    // if (videoRef) {
-    //   videoRef.dispatchAction(ACTIONS.TIME_UPDATE, { currentTime: 0 });
-    //   videoRef.dispatchAction(ACTIONS.PLAY);
-    // }
   };
 
   return (
@@ -75,14 +69,7 @@ export default function VideoModal() {
             <MDBIcon far icon="times-circle" className={style.closeIcon} onClick={onCancel} />
             <FlexColumn>
               <FlexRow>
-                <IVideo
-                  url={videoUrl}
-                  exposeRef={(ref) => {
-                    setVideoRef(ref);
-                  }}
-                  className={style.videoPlayer}
-                  style={{ height: window.innerHeight * 0.8 }}
-                />
+                <IVideo url={videoUrl} />
                 {/* TODO 点赞 关注... */}
                 <div className={style.actions}></div>
               </FlexRow>

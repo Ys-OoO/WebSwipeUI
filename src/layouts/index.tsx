@@ -1,12 +1,22 @@
 import { FlexAuto, FlexColumn, FlexColumnAuto } from '@/components/StyledComponents';
-import { Outlet } from 'umi';
+import { useEffect } from 'react';
+import { Outlet, useDispatch } from 'umi';
 import BasicHeader from './BasicHeader';
 import BasicSideBar from './BasicSideBar';
 
 
 export default function Layout() {
+  const dispatch = useDispatch();
+  //请求分类数据
+  useEffect(() => {
+    dispatch({
+      type:"menu/refreshCategory",
+    })
+  }, [])
+  
+  
   return (
-    <FlexColumn style={{height:window.innerHeight,minWidth:1200}}>
+    <FlexColumn style={{height:"100vh"}}>
       <BasicHeader />
       <FlexAuto>
         <BasicSideBar />

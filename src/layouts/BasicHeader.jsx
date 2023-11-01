@@ -1,9 +1,12 @@
 import logo from '@/assets/logo.png';
-import Avatar from '@/components/Avater';
+import IAvatar from '@/components/IAvater';
 import { FlexAuto, FlexColumn, FlexRow } from '@/components/StyledComponents';
+import { useState } from 'react';
 import style from './style.less';
 
 export default function BasicHeader() {
+  const [showUserInfo, setShowUserInfo] = useState(false);
+
   return (
     <FlexRow className={style.header}>
       <img src={logo} alt="logo" className={style.logo} />
@@ -12,7 +15,7 @@ export default function BasicHeader() {
         <div className={style.searchInput}></div>
       </FlexAuto>
       <FlexColumn style={{ margin: 'auto', marginRight: 4 }}>
-        <Avatar />
+        <IAvatar />
       </FlexColumn>
     </FlexRow>
   );

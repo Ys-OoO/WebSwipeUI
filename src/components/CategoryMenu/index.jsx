@@ -16,17 +16,17 @@ export default function CategoryMenu({ menuOption = [], defaultKey, onClick, ...
           <CategoryButton
             icon={menuItem?.icon || <HotIcon />}
             desc={menuItem?.text}
-            key={menuItem?.key || index}
-            selected={selectedKey === menuItem?.key}
+            key={menuItem?.categoryKey || index}
+            selected={selectedKey === menuItem?.categoryKey}
             onClick={() => {
-              setSelectedKey(menuItem?.key);
-              if (onClick) onClick(menuItem?.key);
+              setSelectedKey(menuItem?.categoryKey);
+              if (onClick) onClick(menuItem?.categoryKey);
             }}
           />
         );
         if (menuItem?.divider) {
           return (
-            <Fragment key={menuItem?.key}>
+            <Fragment key={menuItem?.categoryKey}>
               {btn}
               <div className={style.divider}></div>
             </Fragment>

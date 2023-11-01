@@ -48,7 +48,7 @@ export default function VideoWaterfall() {
             <VideoCard
               videoInfo={video}
               key={index}
-              style={{ height: video?.coverUrl ? undefined : 480 }}
+              style={{ height: video?.height ? video?.height : 480 }}
             />
           );
         })}
