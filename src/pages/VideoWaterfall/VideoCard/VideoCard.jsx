@@ -1,3 +1,4 @@
+import { Image } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 import { useDispatch, useSelector } from 'umi';
@@ -32,6 +33,7 @@ export default function VideoCard({ videoInfo, ...props }) {
   const dispatch = useDispatch();
   const duration = !!createAt ? dayjs(createAt).fromNow() : '最近';
   const userName = createUser ? createUser?.name : '匿名';
+
   const displayVideo = () => {
     //找出当前点击的视频索引
     const currentVideoIndex = _.findIndex(videoList, { id });
@@ -47,7 +49,7 @@ export default function VideoCard({ videoInfo, ...props }) {
   return (
     <div {...props} className={style.cardBox} onClick={displayVideo}>
       <div className={style.cardCover}>
-        <img src={src} alt={description} />
+        <Image src={src} alt={description} width={'100%'} preview={false} placeholder={true} />
       </div>
       <div className={style.infoBox}>
         <div className={style.desc}>{description || '该视频作者未进行描述喔~'}</div>
