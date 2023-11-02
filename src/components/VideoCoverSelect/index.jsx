@@ -14,7 +14,6 @@ export default function VideoCoverSelect({ file, onChange, ...props }) {
   };
 
   useEffect(() => {
-    console.log(file);
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -27,8 +26,8 @@ export default function VideoCoverSelect({ file, onChange, ...props }) {
   useEffect(() => {}, [previewVideoSrc]);
 
   const calcFram = (e) => {
-    //由于无法获取帧率，帧数等，我们暂且认为视频都是30帧
-    updateValue({ fram: _.round(e.target.currentTime * 30) });
+    //秒
+    updateValue({ fram: _.round(e.target.currentTime) });
   };
 
   return (

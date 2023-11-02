@@ -22,7 +22,7 @@ export default function VideoWaterfall() {
         category: params.category || null,
       },
     });
-  }, []);
+  }, [params.category]);
 
   useEffect(() => {
     if (containerRef.current) {

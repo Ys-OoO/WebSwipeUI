@@ -3,16 +3,16 @@ import { uploadVideoFile } from '@/services/video/video';
 import { Form, Input, Modal, Select, Upload, message } from 'antd';
 import _ from 'lodash';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'umi';
+import { useDispatch, useParams, useSelector } from 'umi';
 
 export default function VideoUpload() {
   const disptch = useDispatch();
   const { visible } = useSelector((state) => state.videoUpload);
   const { menuOption } = useSelector((state) => state.menu);
+  const params = useParams();
   const categories = _.filter(menuOption, (o) => {
     return o.categoryKey !== 'popular';
   });
-  console.log(categories);
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState([]);
 
@@ -33,12 +33,12 @@ export default function VideoUpload() {
     const result = await form
       .validateFields()
       .then((value) => {
-        const { category, cover, description, isVertical } = form.getFieldsValue();
+        const { categories, cover, description, isVertical } = form.getFieldsValue();
         const videoFile = form.getFieldValue('dragger').file;
         //send Request
         const res = uploadVideoFile({
           file: videoFile,
-          category,
+          categories,
           isVertical,
           ...cover,
           description,
@@ -52,6 +52,7 @@ export default function VideoUpload() {
     if (result) {
       clearForm();
       disptch({ type: 'videoUpload/save', config: { visible: false } });
+      disptch({ type: 'videoWaterfall/refreshVideoList', config: { category: params.category } });
       message.success('视频上传成功啦🙌~');
     }
   };

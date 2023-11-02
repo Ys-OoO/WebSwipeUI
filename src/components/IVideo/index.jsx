@@ -6,6 +6,12 @@ export default function IVideo({ url, ...props }) {
     <div data-vjs-player {...props} style={{ flex: 1 }}>
       <VideoPlayer
         src={url}
+        sources={[
+          {
+            src: { url },
+            type: 'vide/mp4',
+          },
+        ]}
         controls
         autoplay
         disablePictureInPicture={true}

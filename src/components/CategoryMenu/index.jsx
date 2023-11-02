@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import { Fragment, useState } from 'react';
-import { HotIcon } from '../icons';
 import CategoryButton from './CategoryButton/index';
 import style from './style.less';
 
@@ -14,7 +13,7 @@ export default function CategoryMenu({ menuOption = [], defaultKey, onClick, ...
       {_.map(menu, (menuItem, index) => {
         const btn = (
           <CategoryButton
-            icon={menuItem?.icon || <HotIcon />}
+            icon={menuItem?.icon}
             desc={menuItem?.text}
             key={menuItem?.categoryKey || index}
             selected={selectedKey === menuItem?.categoryKey}
