@@ -1,10 +1,14 @@
 import request from '@/utils/request';
 
+export async function login(params, conf) {
+  return request.post(`/user/login`, params, { noToken: true, ...conf });
+}
+
 export async function register(params = {}, conf) {
   //组装视频数据
   const multipartFile = new FormData();
   for (const key in params) {
     multipartFile.append(key, params[key]);
   }
-  return request.post(`/user/register?`, multipartFile, { ...conf, timeout: 60000 });
+  return request.post(`/user/register`, multipartFile, { noToken: true, ...conf });
 }

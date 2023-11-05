@@ -23,6 +23,11 @@ export default function BasicHeader() {
               dispatch({ type: 'user/save', config: { registerVisible: true } });
             },
           }}
+          onLogin={{
+            onClick: () => {
+              dispatch({ type: 'user/save', config: { loginVisible: true } });
+            },
+          }}
         />
       </FlexColumn>
     </FlexRow>

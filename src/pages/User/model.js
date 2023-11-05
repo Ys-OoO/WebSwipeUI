@@ -1,7 +1,8 @@
 export default {
   namespace: 'user',
   state: {
-    registerVisible: false
+    registerVisible: false,
+    loginVisible: false,
   },
   effects: {
     *change({ config }, { put }) {
