@@ -8,17 +8,22 @@ const DropDownItem = styled.div`
   text-align: center;
 `;
 
-export default function IAvatar({ url = defaultAvatar, ...props }) {
+export default function IAvatar({ onLogin, onLogout, onRegister, url = defaultAvatar, ...props }) {
   const items = [
     {
       key: 'login',
-      label: <DropDownItem>登录</DropDownItem>,
-      //TODO render:
+      label: <DropDownItem onClick={onLogin?.onClick}>登录</DropDownItem>,
+      render: onLogin?.render,
     },
     {
       key: 'logout',
-      label: <DropDownItem>登出</DropDownItem>,
-      // render:
+      label: <DropDownItem onClick={onLogout?.onClick}>登出</DropDownItem>,
+      render: onLogout?.render,
+    },
+    {
+      key: 'register',
+      label: <DropDownItem onClick={onRegister?.onClick}>注册</DropDownItem>,
+      render: onRegister?.render,
     },
   ];
   return (

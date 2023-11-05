@@ -1,4 +1,5 @@
 import { FlexAuto, FlexColumn, FlexColumnAuto } from '@/components/StyledComponents';
+import RegisterModal from '@/pages/User/RegisterModal/RegisterModal';
 import { useEffect } from 'react';
 import { Outlet, useDispatch } from 'umi';
 import BasicHeader from './BasicHeader';
@@ -26,6 +27,7 @@ export default function Layout() {
           <Outlet/>
         </FlexColumnAuto>
       </FlexAuto>
+      <RegisterModal/>
     </FlexColumn>
   );
 }
