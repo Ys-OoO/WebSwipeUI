@@ -1,5 +1,6 @@
 import IVideo from '@/components/IVideo';
 import { FlexColumn, FlexRow } from '@/components/StyledComponents';
+import { HeartIcon, RedHeartIcon } from '@/components/icons';
 import dayjs from 'dayjs';
 import { MDBIcon, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog } from 'mdb-react-ui-kit';
 import { useEffect, useRef } from 'react';
@@ -71,7 +72,10 @@ export default function VideoModal() {
               <FlexRow>
                 <IVideo url={videoUrl} />
                 {/* TODO 点赞 关注... */}
-                <div className={style.actions}></div>
+                <div className={style.actions}>
+                  <HeartIcon />
+                  <RedHeartIcon />
+                </div>
               </FlexRow>
               <div className={style.infoBox}>
                 <div className={style.otherInfo}>

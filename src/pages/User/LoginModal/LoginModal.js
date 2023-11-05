@@ -14,7 +14,8 @@ export default function LoginModal() {
     }
     const { webSwipeToken } = res?.data;
     localStorage.setItem("webSwipeToken", webSwipeToken);
-    onCancel()
+    dispatch({ type: "user/refreshCurrentUser" });
+    onCancel();
   }
 
   const onCancel = () => {

@@ -12,3 +12,11 @@ export async function register(params = {}, conf) {
   }
   return request.post(`/user/register`, multipartFile, { noToken: true, ...conf });
 }
+
+export async function getCurrentUser(params = {}, conf) {
+  return request.get(`/user/current`, params, conf);
+}
+
+export async function logout(params = {}, conf) {
+  return request.post(`/user/logout`, params, conf);
+}
