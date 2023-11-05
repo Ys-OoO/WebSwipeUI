@@ -18,12 +18,13 @@ const requestInstance = axios.create({
 
 requestInstance.interceptors.request.use((requestConfig) => {
   //token
-  if (requestConfig.noToken) {
-    const itabToken = localStorage.getItem('itabToken');
-    if (!itabToken) {
+  if (!requestConfig.noToken) {
+    const webSwipeToken = localStorage.getItem('webSwipeToken');
+
+    if (!webSwipeToken) {
       message.error('请重新登陆');
     } else {
-      requestConfig.headers.set('itabToken', itabToken);
+      requestConfig.headers.set('webSwipeToken', webSwipeToken);
     }
   }
 

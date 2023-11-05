@@ -15,9 +15,42 @@ const HotSvg = (props) => {
   )
 }
 
+const HeartSvg = (props) => {
+  return (
+    <svg
+      className="icon"
+      viewBox="0 0 1024 1024"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      width="2em"
+      height="2em"
+    >
+      <path d="M883.1 179.3C780.6 76.8 614.5 76.8 512 179.3c-102.5-102.5-268.6-102.5-371.1 0s-102.5 268.6 0 371.1L512 921.6l371.1-371.1c102.5-102.6 102.5-268.7 0-371.2z" fill="#bfbfbf" p-id="968"></path>
+    </svg>
+  )
+}
+
+const RedHeartSvg = (props) => {
+  return (
+    <svg
+      className="icon"
+      viewBox="0 0 1024 1024"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      width="2em"
+      height="2em"
+    >
+      <path d="M883.1 179.3C780.6 76.8 614.5 76.8 512 179.3c-102.5-102.5-268.6-102.5-371.1 0s-102.5 268.6 0 371.1L512 921.6l371.1-371.1c102.5-102.6 102.5-268.7 0-371.2z" fill="#FF0000" p-id="1117"></path>
+    </svg>
+  )
+}
+
 const HotIcon = (props) => <Icon component={HotSvg} {...props} />
+const HeartIcon = (props) => <Icon component={HeartSvg} {...props} />
+const RedHeartIcon = (props) => <Icon component={RedHeartSvg} {...props} />
+
 
 export {
-  HotIcon
+  HeartIcon, HotIcon, RedHeartIcon
 };
 
