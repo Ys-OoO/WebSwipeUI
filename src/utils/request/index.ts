@@ -1,4 +1,3 @@
-import { message } from 'antd';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import errorCatcher, { Response } from './errorCatcher';
 
@@ -22,7 +21,7 @@ requestInstance.interceptors.request.use((requestConfig) => {
     const webSwipeToken = localStorage.getItem('webSwipeToken');
 
     if (!webSwipeToken) {
-      message.error('请重新登陆');
+      // message.error('请重新登陆');
     } else {
       requestConfig.headers.set('webSwipeToken', webSwipeToken);
     }
@@ -43,6 +42,9 @@ requestInstance.interceptors.response.use(
   },
   (error: AxiosError) => {
     if (error.message === 'cancel') {
+      throw error;
+    }
+    if (error.config?.url === '/user/current') {
       throw error;
     }
     errorCatcher(true, error.response as AxiosResponse<Response>, error.config?.noGlobalMessage);

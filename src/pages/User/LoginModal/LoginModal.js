@@ -14,7 +14,7 @@ export default function LoginModal() {
     }
     const { webSwipeToken } = res?.data;
     localStorage.setItem("webSwipeToken", webSwipeToken);
-    dispatch({ type: "user/refreshCurrentUser" });
+    await dispatch({ type: "user/refreshCurrentUser" });
     onCancel();
   }
 
@@ -28,6 +28,7 @@ export default function LoginModal() {
       title="注册账号"
       closeIcon={null}
       onCancel={onCancel}
+      zIndex={9999}
     >
       <Form
         name="basic"

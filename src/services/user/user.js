@@ -20,3 +20,11 @@ export async function getCurrentUser(params = {}, conf) {
 export async function logout(params = {}, conf) {
   return request.post(`/user/logout`, params, conf);
 }
+
+export async function act(params = {}, conf) {
+  return request.post(`/userinteraction/act`, params, conf);
+}
+
+export async function cancel(params = {}, conf) {
+  return request.post(`/userinteraction/cancel`, params, conf);
+}

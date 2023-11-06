@@ -28,11 +28,11 @@ dayjs.updateLocale('zh-cn', {
 });
 
 export default function VideoCard({ videoInfo, ...props }) {
-  const { coverUrl: src, description, createUser, createAt, id } = videoInfo;
+  const { coverUrl: src, description, username, createAt, id } = videoInfo;
   const { videoList } = useSelector((state) => state.videoWaterfall);
   const dispatch = useDispatch();
   const duration = !!createAt ? dayjs(createAt).fromNow() : '最近';
-  const userName = createUser ? createUser?.name : '匿名';
+  const userName = username || '匿名';
 
   const displayVideo = () => {
     //找出当前点击的视频索引
