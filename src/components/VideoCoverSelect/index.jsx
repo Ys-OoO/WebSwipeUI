@@ -4,8 +4,8 @@ import 'video.js/dist/video-js.css';
 
 export default function VideoCoverSelect({ file, onChange, ...props }) {
   const controlled = 'value' in props;
-  const [thisValue, setThisValue] = useState({ fram: 0 });
-  const value = controlled ? props.value || { fram: 0 } : thisValue;
+  const [thisValue, setThisValue] = useState({ offset: 0 });
+  const value = controlled ? props.value || { offset: 0 } : thisValue;
   const [previewVideoSrc, setPreviewVideoSrc] = useState('');
 
   const updateValue = (v) => {
@@ -27,7 +27,7 @@ export default function VideoCoverSelect({ file, onChange, ...props }) {
 
   const calcFram = (e) => {
     //秒
-    updateValue({ fram: _.round(e.target.currentTime) });
+    updateValue({ offset: _.round(e.target.currentTime) });
   };
 
   return (

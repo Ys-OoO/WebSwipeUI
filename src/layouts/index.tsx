@@ -23,7 +23,7 @@ export default function Layout() {
       <FlexAuto>
         <BasicSideBar />
         <FlexColumnAuto 
-        style={{ backgroundImage:"linear-gradient(60deg,#161823 0%, #161823 100%)", padding:16}}
+        style={{ backgroundImage:"linear-gradient(60deg,#161823 0%, #161823 100%)", padding:16,overflow:'hidden'}}
         >
           <Outlet/>
         </FlexColumnAuto>

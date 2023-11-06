@@ -41,7 +41,7 @@ export default function VideoWaterfall() {
   }, []);
 
   return (
-    <>
+    <div style={{ overflow: 'hidden', maxHeight: '90vh' }}>
       <wc-waterfall gap={gap} cols={column} ref={containerRef}>
         {_.map(videoList, (video, index) => {
           return (
@@ -54,6 +54,6 @@ export default function VideoWaterfall() {
         })}
       </wc-waterfall>
       {_.isEmpty(currentVideo) ? <></> : <VideoModal />}
-    </>
+    </div>
   );
 }
