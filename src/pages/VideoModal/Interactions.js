@@ -1,5 +1,6 @@
 import { FlexColumn } from "@/components/StyledComponents";
 import { act, cancel } from '@/services/user/user';
+import _ from 'lodash';
 import { useState } from "react";
 import { useDispatch, useSelector } from "umi";
 
@@ -11,10 +12,10 @@ export default function Interactions({ isLike, isCollect, ...props }) {
   const [_isCollect, setIsCollect] = useState(isLike);
   const { currentUser } = useSelector(state => state.user);
   const dispatch = useDispatch();
-  console.log(currentVideo);
 
   const onLike = async () => {
-    if (!currentUser) {
+
+    if (_.isEmpty(currentUser)) {
       dispatch({
         type: 'user/save', config: {
           loginVisible: true
@@ -31,7 +32,7 @@ export default function Interactions({ isLike, isCollect, ...props }) {
   }
 
   const onCollect = async () => {
-    if (!currentUser) {
+    if (_.isEmpty(currentUser)) {
       dispatch({
         type: 'user/save', config: {
           loginVisible: true
