@@ -25,7 +25,7 @@ export default function LoginModal() {
   return (
     <Modal open={loginVisible}
       footer={null}
-      title="注册账号"
+      title="登录"
       closeIcon={null}
       onCancel={onCancel}
       zIndex={9999}
