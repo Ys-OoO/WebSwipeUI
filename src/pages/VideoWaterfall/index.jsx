@@ -41,14 +41,14 @@ export default function VideoWaterfall() {
   }, []);
 
   return (
-    <div style={{ overflow: 'hidden', maxHeight: '90vh' }}>
+    <div style={{ overflow: 'scroll', maxHeight: '90vh' }}>
       <wc-waterfall gap={gap} cols={column} ref={containerRef}>
         {_.map(videoList, (video, index) => {
           return (
             <VideoCard
               videoInfo={video}
               key={index}
-              style={{ height: video?.height ? video?.height : 600 }}
+              // style={{ height: video?.height ? video?.height : 600 }}
             />
           );
         })}
