@@ -1,4 +1,4 @@
-import { login } from '@/services/user/user';
+import { getCurrentUser, login } from '@/services/user/user';
 import { Button, Form, Input, Modal, message } from 'antd';
 import { useDispatch, useSelector } from 'umi';
 
@@ -14,7 +14,8 @@ export default function LoginModal() {
     }
     const { webSwipeToken } = res?.data;
     localStorage.setItem("webSwipeToken", webSwipeToken);
-    await dispatch({ type: "user/refreshCurrentUser" });
+    const res2 = await getCurrentUser();
+    await dispatch({ type: "user/save", config: { currentUser: res2?.data } });
     onCancel();
   }
 
