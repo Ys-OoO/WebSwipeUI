@@ -35,6 +35,7 @@ export default function BasicHeader() {
           onLogout={{
             onClick: () => {
               dispatch({ type: 'user/save', config: { currentUser: {} } });
+              localStorage.removeItem('webSwipeToken');
             },
           }}
         />

@@ -1,10 +1,10 @@
 import IVideo from '@/components/IVideo';
 import { FlexColumn, FlexRow } from '@/components/StyledComponents';
-import { HeartIcon, RedHeartIcon } from '@/components/icons';
 import dayjs from 'dayjs';
 import { MDBIcon, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog } from 'mdb-react-ui-kit';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'umi';
+import Interactions from './Interactions';
 import style from './style.less';
 
 export default function VideoModal() {
@@ -12,7 +12,7 @@ export default function VideoModal() {
   const { visible, currentVideo, currentVideoIndex, videoList } = useSelector(
     (state) => state.videoWaterfall,
   );
-  const { videoUrl, description, createAt, createUser } = currentVideo;
+  const { videoUrl, description, createAt, createUser, isLike, isCollect } = currentVideo;
   const modalRef = useRef();
   const time = dayjs(createAt).format('YYYY-MM-DD');
   const onCancel = () => {
@@ -73,8 +73,7 @@ export default function VideoModal() {
                 <IVideo url={videoUrl} />
                 {/* TODO 点赞 关注... */}
                 <div className={style.actions}>
-                  <HeartIcon />
-                  <RedHeartIcon />
+                  <Interactions isLike={isLike} isCollect={isCollect} key={videoUrl} />
                 </div>
               </FlexRow>
               <div className={style.infoBox}>
