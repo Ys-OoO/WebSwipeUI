@@ -4,11 +4,14 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "umi";
 
 export default function Interactions({ isLike, isCollect, ...props }) {
+  const { currentVideo } = useSelector(
+    (state) => state.videoWaterfall,
+  );
   const [_isLike, setIsLike] = useState(isLike);
   const [_isCollect, setIsCollect] = useState(isLike);
   const { currentUser } = useSelector(state => state.user);
   const dispatch = useDispatch();
-  console.log(currentUser);
+  console.log(currentVideo);
 
   const onLike = async () => {
     if (!currentUser) {
@@ -20,9 +23,9 @@ export default function Interactions({ isLike, isCollect, ...props }) {
       return;
     }
     if (_isLike) {
-      await cancel({ interactionType: "thumb_up" })
+      await cancel({ interactionType: "thumb_up", videoId: currentVideo.id })
     } else {
-      await act({ interactionType: "thumb_up" })
+      await act({ interactionType: "thumb_up", videoId: currentVideo.id })
     }
     setIsLike(!_isLike)
   }
@@ -37,9 +40,9 @@ export default function Interactions({ isLike, isCollect, ...props }) {
       return;
     }
     if (_isCollect) {
-      await cancel({ interactionType: "collect" })
+      await cancel({ interactionType: "collect", videoId: currentVideo.id })
     } else {
-      await act({ interactionType: "collect" })
+      await act({ interactionType: "collect", videoId: currentVideo.id })
     }
     setIsCollect(!_isCollect)
   }
