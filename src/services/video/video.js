@@ -23,3 +23,7 @@ export async function getInteractionVideos(params = {}, conf) {
 export async function getUploadVideos(params = {}, conf) {
   return requestInstance.post(`/video/getuploadvideo`, params, conf);
 }
+
+export async function searchVideos(params = {}, conf) {
+  return requestInstance.get(`/video/search?${qs.stringify(params)}`, conf);
+}
