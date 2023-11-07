@@ -15,3 +15,11 @@ export async function uploadVideoFile(params = {}, conf) {
   }
   return requestInstance.post(`/video/upload`, multipartFile, { ...conf, timeout: 60000 });
 }
+
+export async function getInteractionVideos(params = {}, conf) {
+  return requestInstance.post(`/video/getinteractionvideo`, params, conf);
+}
+
+export async function getUploadVideos(params = {}, conf) {
+  return requestInstance.post(`/video/getuploadvideo`, params, conf);
+}

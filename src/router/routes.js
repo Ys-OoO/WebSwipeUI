@@ -15,6 +15,10 @@ const routes = [
   {
     path: '/home/popular',
     component: '@/pages/VideoWaterfall',
+  },
+  {
+    path: '/home/own',
+    component: '@/pages/Own',
   }
 ]
 

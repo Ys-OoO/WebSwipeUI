@@ -1,5 +1,5 @@
 import { getCurrentUser, login } from '@/services/user/user';
-import { Button, Form, Input, Modal, message } from 'antd';
+import { Button, Form, Input, Modal } from 'antd';
 import { useDispatch, useSelector } from 'umi';
 
 export default function LoginModal() {
@@ -10,7 +10,8 @@ export default function LoginModal() {
   const onFinish = async (value) => {
     const res = await login(value);
     if (res.code !== 0) {
-      message.error("登陆失败请重试")
+      onCancel();
+      return;
     }
     const { webSwipeToken } = res?.data;
     localStorage.setItem("webSwipeToken", webSwipeToken);
