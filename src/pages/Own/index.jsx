@@ -2,9 +2,9 @@ import IAvatar from '@/components/IAvater';
 import { FlexColumnAuto, FlexRow } from '@/components/StyledComponents';
 import OwnVideoList from '@/pages/Own/OwnVideoList/OwnVideoList';
 import { Tabs } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'umi';
+import { useDispatch, useSelector } from 'umi';
 import style from './style.less';
 // import {useEffect} from 'react'
 
@@ -15,7 +15,23 @@ const TabItem = styled.div`
 export default function Own() {
   const { currentUser } = useSelector((state) => state.user);
   const [currentTab, setCurrentTab] = useState('published');
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({
+      type: 'user/change',
+      config: {
+        showSearch: false,
+      },
+    });
+    return () => {
+      dispatch({
+        type: 'user/change',
+        config: {
+          showSearch: true,
+        },
+      });
+    };
+  }, []);
   const onTabChange = (activeKey) => {
     setCurrentTab(activeKey);
   };

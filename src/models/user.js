@@ -5,7 +5,8 @@ export default {
   state: {
     registerVisible: false,
     loginVisible: false,
-    currentUser: {}
+    currentUser: {},
+    showSearch: true
   },
   effects: {
     *change({ config }, { put }) {
