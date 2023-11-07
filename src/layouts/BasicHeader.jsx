@@ -8,7 +8,7 @@ import { history, useDispatch, useSelector } from 'umi';
 import style from './style.less';
 export default function BasicHeader() {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, showSearch } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch({
       type: 'user/refreshCurrentUser',
@@ -38,14 +38,16 @@ export default function BasicHeader() {
       <img src={logo} alt="logo" className={style.logo} />
       <FlexAuto style={{ flex: 1, justifyContent: 'center', marginTop: 8 }}>
         <div className={style.searchInput}>
-          <Input
-            placeholder="输入搜索内容，按回车搜索"
-            value={value}
-            onPressEnter={onPressEnter}
-            onChange={onChange}
-            prefix={<i className="fas fa-magnifying-glass"></i>}
-            size="large"
-          />
+          {!showSearch || (
+            <Input
+              placeholder="输入搜索内容，按回车搜索"
+              value={value}
+              onPressEnter={onPressEnter}
+              onChange={onChange}
+              prefix={<i className="fas fa-magnifying-glass"></i>}
+              size="large"
+            />
+          )}
         </div>
       </FlexAuto>
       <FlexColumn style={{ margin: 'auto', marginRight: 4 }}>
