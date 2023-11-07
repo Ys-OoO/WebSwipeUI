@@ -3,7 +3,7 @@ import qs from 'querystring';
 
 
 export async function listVideo(params = {}, conf) {
-  return requestInstance.get(`/video/list?${qs.stringify(params)}`, { noToken: true, ...conf });
+  return requestInstance.get(`/video/list?${qs.stringify(params)}`, params, { noToken: true, ...conf });
 }
 
 
@@ -17,7 +17,7 @@ export async function uploadVideoFile(params = {}, conf) {
 }
 
 export async function getInteractionVideos(params = {}, conf) {
-  return requestInstance.post(`/video/getinteractionvideo`, params, conf);
+  return requestInstance.get(`/video/getinteractionvideo?${qs.stringify(params)}`, params, conf);
 }
 
 export async function getUploadVideos(params = {}, conf) {
