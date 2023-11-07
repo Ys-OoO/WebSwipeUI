@@ -5,7 +5,9 @@ import { Navigate, useParams } from 'umi';
 */
 export default (props) => {
   const params = useParams();
-
+  if (params?.category === 'own') {
+    return <Navigate to="/home/own" />
+  }
   if (params?.category) {
     return <Navigate to={`/home/${params.category}`} />;
   } else {

@@ -2,7 +2,7 @@ import logo from '@/assets/logo.png';
 import IAvatar from '@/components/IAvater';
 import { FlexAuto, FlexColumn, FlexRow } from '@/components/StyledComponents';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'umi';
+import { history, useDispatch, useSelector } from 'umi';
 import style from './style.less';
 
 export default function BasicHeader() {
@@ -36,6 +36,12 @@ export default function BasicHeader() {
             onClick: () => {
               dispatch({ type: 'user/save', config: { currentUser: {} } });
               localStorage.removeItem('webSwipeToken');
+              history.push('/home');
+            },
+          }}
+          toOwnPage={{
+            onClick: () => {
+              history.push('/home/own');
             },
           }}
         />

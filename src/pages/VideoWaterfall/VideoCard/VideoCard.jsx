@@ -49,7 +49,13 @@ export default function VideoCard({ videoInfo, ...props }) {
   return (
     <div {...props} className={style.cardBox} onClick={displayVideo}>
       <div className={style.cardCover}>
-        <Image src={src} alt={description} width={'100%'} preview={false} placeholder={true} />
+        <Image
+          src={src}
+          style={{ minHeight: 230 }}
+          width={'100%'}
+          preview={false}
+          placeholder={true}
+        />
       </div>
       <div className={style.infoBox}>
         <div className={style.desc}>{description || '该视频作者未进行描述喔~'}</div>
