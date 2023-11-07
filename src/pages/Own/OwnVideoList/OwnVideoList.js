@@ -38,14 +38,14 @@ export default function OwnVideoList({ currentTab }) {
   }, [])
 
   return (
-    <div style={{ overflow: 'scroll', maxHeight: '90vh' }}>
-      <wc-waterfall gap={10} cols={4}>
+    <div style={{ overflow: 'scroll', maxHeight: '65vh' }}>
+      <wc-waterfall gap={10} cols={6}>
         {_.map(videoList, (video, index) => {
           return (
             <VideoCard
               videoInfo={video}
               key={index}
-            // style={{ height: 600 }}
+              style={{ maxHeight: 400 }}
             />
           );
         })}

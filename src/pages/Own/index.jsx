@@ -9,7 +9,7 @@ import style from './style.less';
 // import {useEffect} from 'react'
 
 const TabItem = styled.div`
-  font-size: 24px;
+  font-size: 16px;
   color: #fff;
 `;
 export default function Own() {
@@ -38,17 +38,32 @@ export default function Own() {
 
   const tabs = [
     {
-      label: <TabItem>我的</TabItem>,
+      label: (
+        <TabItem>
+          <i class="fas fa-cloud" style={{ color: 'skyblue', marginRight: 4 }}></i>
+          我的
+        </TabItem>
+      ),
       key: 'published',
       children: <OwnVideoList currentTab={currentTab} />,
     },
     {
-      label: <TabItem>喜欢</TabItem>,
+      label: (
+        <TabItem>
+          <i className="fas fa-heart" style={{ color: 'red', marginRight: 4 }}></i>
+          喜欢
+        </TabItem>
+      ),
       key: 'like',
       children: <OwnVideoList currentTab={currentTab} />,
     },
     {
-      label: <TabItem>收藏</TabItem>,
+      label: (
+        <TabItem>
+          <i className="fas fa-star" style={{ color: '#ffd85d', marginRight: 4 }}></i>
+          收藏
+        </TabItem>
+      ),
       key: 'collected',
       children: <OwnVideoList currentTab={currentTab} />,
     },
@@ -72,7 +87,7 @@ export default function Own() {
         onChange={onTabChange}
         tabBarStyle={{
           backgroundColor: 'rgba(255, 255, 255, 40%)',
-          fontSize: '50px',
+          fontSize: '24px',
           color: '#fff',
         }}
       />
