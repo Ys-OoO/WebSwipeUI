@@ -10,6 +10,15 @@ export default function BasicSideBar() {
   const dispatch = useDispatch();
   const params = useParams();
   const onClick = (key) => {
+    if (key === params.category || _.isEmpty(params)) {
+      dispatch({
+        type: 'videoWaterfall/refreshVideoList',
+        config: {
+          category: params.category || null,
+        },
+      });
+    }
+
     history.push('/home/' + key);
   };
 

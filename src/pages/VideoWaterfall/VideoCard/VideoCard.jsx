@@ -8,17 +8,18 @@ const relativeTime = require('dayjs/plugin/relativeTime');
 const updateLocale = require('dayjs/plugin/updateLocale');
 dayjs.extend(relativeTime);
 dayjs.extend(updateLocale);
+dayjs.locale('zh-cn');
 
 dayjs.updateLocale('zh-cn', {
   relativeTime: {
-    future: '%s 后',
-    past: '%s 前',
+    future: '%s后',
+    past: '%s前',
     s: '几秒',
     m: '一分钟',
     mm: '%d 分钟',
-    h: '1小时',
+    h: '1 小时',
     hh: '%d 小时',
-    d: '1天',
+    d: '1 天',
     dd: '%d 天',
     M: '一个月',
     MM: '%d 个月',

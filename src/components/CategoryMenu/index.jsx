@@ -3,7 +3,7 @@ import { Fragment, useState } from 'react';
 import CategoryButton from './CategoryButton/index';
 import style from './style.less';
 
-export default function CategoryMenu({ menuOption = [], defaultKey, onClick, ...props }) {
+export default function CategoryMenu({ menuOption = [], defaultKey, onClick, onChange, ...props }) {
   const menu = menuOption;
   const selected = defaultKey ?? '';
   const [selectedKey, setSelectedKey] = useState(selected);
