@@ -1,10 +1,11 @@
 import logo from '@/assets/logo.png';
 import IAvatar from '@/components/IAvater';
 import { FlexAuto, FlexColumn, FlexRow } from '@/components/StyledComponents';
-import { useEffect } from 'react';
+import { searchVideos } from '@/services/video/video';
+import { Input } from 'antd';
+import { useEffect, useState } from 'react';
 import { history, useDispatch, useSelector } from 'umi';
 import style from './style.less';
-
 export default function BasicHeader() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
@@ -13,11 +14,39 @@ export default function BasicHeader() {
       type: 'user/refreshCurrentUser',
     });
   }, []);
+
+  const [value, setValue] = useState('');
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const onPressEnter = async () => {
+    const res = await searchVideos({ desc: value });
+    if (res?.code !== 0) {
+      return;
+    }
+    dispatch({
+      type: 'videoWaterfall/change',
+      config: {
+        videoList: res?.data,
+      },
+    });
+    setValue('');
+  };
   return (
     <FlexRow className={style.header}>
       <img src={logo} alt="logo" className={style.logo} />
-      <FlexAuto>
-        <div className={style.searchInput}></div>
+      <FlexAuto style={{ flex: 1, justifyContent: 'center', marginTop: 8 }}>
+        <div className={style.searchInput}>
+          <Input
+            placeholder="输入搜索内容，按回车搜索"
+            value={value}
+            onPressEnter={onPressEnter}
+            onChange={onChange}
+            prefix={<i className="fas fa-magnifying-glass"></i>}
+            size="large"
+          />
+        </div>
       </FlexAuto>
       <FlexColumn style={{ margin: 'auto', marginRight: 4 }}>
         <IAvatar

@@ -51,14 +51,14 @@ export default function Interactions({ isLike, isCollect, ...props }) {
     <FlexColumn style={{ fontSize: 36, marginLeft: 8 }}>
       <div onClick={onLike} style={{ cursor: 'pointer' }}>
         {
-          !_isLike ? <i class="far fa-heart" style={{ color: 'white' }}></i> :
-            <i class="fas fa-heart" style={{ color: 'red' }}></i>
+          !_isLike ? <i className="far fa-heart" style={{ color: 'white' }}></i> :
+            <i className="fas fa-heart" style={{ color: 'red' }}></i>
         }
       </div>
       <div onClick={onCollect} style={{ cursor: 'pointer' }}>
         {
-          !_isCollect ? <i class="far fa-star" style={{ color: 'white' }}></i> :
-            <i class="fas fa-star" style={{ color: '#ffd85d' }}></i>
+          !_isCollect ? <i className="far fa-star" style={{ color: 'white' }}></i> :
+            <i className="fas fa-star" style={{ color: '#ffd85d' }}></i>
         }
       </div>
     </FlexColumn>

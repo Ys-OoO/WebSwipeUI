@@ -10,12 +10,6 @@ export default function BasicSideBar() {
   const dispatch = useDispatch();
   const params = useParams();
   const onClick = (key) => {
-    dispatch({
-      type: 'videoWaterfall/save',
-      config: {
-        videoList: [],
-      },
-    });
     history.push('/home/' + key);
   };
 
