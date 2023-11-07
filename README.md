@@ -4,7 +4,7 @@
 
 # demo视频
 
-demo视频见当前目录下的`demo视频.mp4`。
+demo视频见当前仓库中的`demo视频.mp4`。
 
 # 功能
 
@@ -59,7 +59,7 @@ demo视频见当前目录下的`demo视频.mp4`。
 
 ## 后端
 
-1. 向MySQL中导入web_swipe.sql文件MySQL
+1. 向MySQL中导入web_swipe.sql文件MySQL（sql文件见：https://github.com/zadarmo/WebSwipeService）
 2. 导入WebSwipeSerivce项目到IDEA或其他编译器，
 3. 修改application.yml文件中的数据库相关配置
 4. 下载maven依赖
@@ -70,4 +70,5 @@ demo视频见当前目录下的`demo视频.mp4`。
 1. 导入WebSwipeUI到VSCode或编译器/编辑器
 2. 终端执行`npm install`，安装依赖 
 3. 终端执行`npm run dev`，启动项目
+
 
