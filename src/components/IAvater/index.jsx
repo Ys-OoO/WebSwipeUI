@@ -30,7 +30,9 @@ export default function IAvatar({
     },
     {
       key: 'logout',
-      label: <DropDownItem onClick={onLogout?.onClick}>登出</DropDownItem>,
+      label: !_.isEmpty(currentUser) ? (
+        <DropDownItem onClick={onLogout?.onClick}>登出</DropDownItem>
+      ) : undefined,
       disabled: _.isEmpty(currentUser),
     },
     {
@@ -42,7 +44,9 @@ export default function IAvatar({
     },
     {
       key: 'personal',
-      label: <DropDownItem onClick={toOwnPage?.onClick}>我的</DropDownItem>,
+      label: !_.isEmpty(currentUser) ? (
+        <DropDownItem onClick={toOwnPage?.onClick}>我的</DropDownItem>
+      ) : undefined,
       disabled: _.isEmpty(currentUser),
     },
   ];
